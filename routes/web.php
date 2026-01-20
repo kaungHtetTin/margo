@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,31 +15,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Locale switcher route (outside locale group)
+Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
+
+// Root redirect to default locale
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    $locale = session('locale', config('app.locale'));
+    if (!in_array($locale, ['en', 'ja', 'my'])) {
+        $locale = config('app.locale');
+    }
+    return redirect()->route('home', ['locale' => $locale]);
+});
 
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
+// Client routes with locale support
+Route::group(['prefix' => '{locale}', 'middleware' => ['locale'], 'where' => ['locale' => 'en|ja|my']], function () {
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
 
-Route::get('/blogs', function () {
-    return view('blogs');
-})->name('blogs');
+    Route::get('/services', function () {
+        return view('services');
+    })->name('services');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+    Route::get('/blogs', function () {
+        return view('blogs');
+    })->name('blogs');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+    Route::get('/register', function () {
+        return view('register');
+    })->name('register');
 
-// Courses Routes
-use App\Http\Controllers\CourseController;
+    Route::get('/contact', function () {
+        return view('contact');
+    })->name('contact');
 
-Route::get('/courses', [CourseController::class, 'index'])->name('courses');
-Route::get('/courses/{id}', [CourseController::class, 'show'])->name('course.detail');
+    Route::get('/faq', function () {
+        $faqs = \App\Models\Faq::active()->ordered()->get();
+        return view('faq', compact('faqs'));
+    })->name('faq');
+
+    // Courses Routes
+    Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+    Route::get('/courses/{id}', [CourseController::class, 'show'])->name('course.detail');
+});
 
 // Admin Login Routes
 Route::get('/admin/login', function () {

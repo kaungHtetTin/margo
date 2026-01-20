@@ -8,14 +8,14 @@
       <div class="hero-overlay" data-aos="fade-up">
         <h1>Overseas Job Opportunities</h1>
         <p>Connecting Myanmar workers with trusted international employers.</p>
-        <a href="{{ route('register') }}" class="btn btn-primary">Get Started</a>
+        <a href="{{ localized_route('register') }}" class="btn btn-primary">{{ __('common.get_started') }}</a>
       </div>
     </div>
     <div class="item" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
       <div class="hero-overlay" data-aos="fade-up">
         <h1>Trusted Manpower Services</h1>
         <p>Professional recruitment for skilled and unskilled workers.</p>
-        <a href="{{ route('register') }}" class="btn btn-primary">Get Started</a>
+        <a href="{{ localized_route('register') }}" class="btn btn-primary">{{ __('common.get_started') }}</a>
       </div>
     </div>
   </div>

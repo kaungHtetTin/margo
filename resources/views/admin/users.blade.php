@@ -40,10 +40,10 @@
               <td><span class="badge bg-success">Active</span></td>
               <td>2024-01-15</td>
               <td>
-                <button class="btn btn-sm btn-outline-primary me-1">
+                <a href="#" class="btn-action btn-action-edit" title="Edit">
                   <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-sm btn-outline-danger">
+                </a>
+                <button type="button" class="btn-action btn-action-delete" title="Delete" onclick="if(confirm('Are you sure you want to delete this user?')) { /* Add delete logic here */ }">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>
@@ -56,10 +56,10 @@
               <td><span class="badge bg-warning">Pending</span></td>
               <td>2024-01-18</td>
               <td>
-                <button class="btn btn-sm btn-outline-primary me-1">
+                <a href="#" class="btn-action btn-action-edit" title="Edit">
                   <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-sm btn-outline-danger">
+                </a>
+                <button type="button" class="btn-action btn-action-delete" title="Delete" onclick="if(confirm('Are you sure you want to delete this user?')) { /* Add delete logic here */ }">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>
@@ -72,10 +72,10 @@
               <td><span class="badge bg-success">Active</span></td>
               <td>2024-01-20</td>
               <td>
-                <button class="btn btn-sm btn-outline-primary me-1">
+                <a href="#" class="btn-action btn-action-edit" title="Edit">
                   <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-sm btn-outline-danger">
+                </a>
+                <button type="button" class="btn-action btn-action-delete" title="Delete" onclick="if(confirm('Are you sure you want to delete this user?')) { /* Add delete logic here */ }">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>

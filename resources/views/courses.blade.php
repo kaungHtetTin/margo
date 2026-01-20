@@ -94,8 +94,8 @@
                 </div>
 
                 <!-- View Details Button -->
-                <a href="{{ route('course.detail', $course->id) }}" class="btn btn-primary" style="width: 100%; text-decoration: none; text-align: center;">
-                  View Details
+                <a href="{{ localized_route('course.detail', ['id' => $course->id]) }}" class="btn btn-primary" style="width: 100%; text-decoration: none; text-align: center;">
+                  {{ __('common.view_details') }}
                 </a>
               </div>
             </div>

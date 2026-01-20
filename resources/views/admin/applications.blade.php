@@ -63,16 +63,16 @@
               <td>2024-01-15</td>
               <td><span class="badge bg-warning">Under Review</span></td>
               <td>
-                <button class="btn btn-sm btn-outline-secondary">
-                  <i class="fas fa-file-pdf"></i> CV
+                <button type="button" class="btn-action btn-action-download" title="View CV">
+                  <i class="fas fa-file-pdf"></i>
                 </button>
               </td>
               <td>
-                <button class="btn btn-sm btn-outline-success me-1">
-                  <i class="fas fa-check"></i> Approve
+                <button type="button" class="btn-action btn-action-approve" title="Approve">
+                  <i class="fas fa-check"></i>
                 </button>
-                <button class="btn btn-sm btn-outline-danger">
-                  <i class="fas fa-times"></i> Reject
+                <button type="button" class="btn-action btn-action-reject" title="Reject">
+                  <i class="fas fa-times"></i>
                 </button>
               </td>
             </tr>
@@ -88,14 +88,14 @@
               <td>2024-01-18</td>
               <td><span class="badge bg-success">Approved</span></td>
               <td>
-                <button class="btn btn-sm btn-outline-secondary">
-                  <i class="fas fa-file-pdf"></i> CV
+                <button type="button" class="btn-action btn-action-download" title="View CV">
+                  <i class="fas fa-file-pdf"></i>
                 </button>
               </td>
               <td>
-                <button class="btn btn-sm btn-outline-info">
-                  <i class="fas fa-eye"></i> View Details
-                </button>
+                <a href="#" class="btn-action btn-action-view" title="View Details">
+                  <i class="fas fa-eye"></i>
+                </a>
               </td>
             </tr>
             <tr>
@@ -110,14 +110,14 @@
               <td>2024-01-20</td>
               <td><span class="badge bg-danger">Rejected</span></td>
               <td>
-                <button class="btn btn-sm btn-outline-secondary">
-                  <i class="fas fa-file-pdf"></i> CV
+                <button type="button" class="btn-action btn-action-download" title="View CV">
+                  <i class="fas fa-file-pdf"></i>
                 </button>
               </td>
               <td>
-                <button class="btn btn-sm btn-outline-info">
-                  <i class="fas fa-eye"></i> View Details
-                </button>
+                <a href="#" class="btn-action btn-action-view" title="View Details">
+                  <i class="fas fa-eye"></i>
+                </a>
               </td>
             </tr>
           </tbody>

@@ -33,4 +33,15 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/settings', function () {
         return view('admin.settings');
     })->name('admin.settings');
+
+    // FAQ Management Routes
+    Route::resource('faqs', \App\Http\Controllers\Admin\AdminFaqController::class)->names([
+        'index' => 'admin.faqs.index',
+        'create' => 'admin.faqs.create',
+        'store' => 'admin.faqs.store',
+        'show' => 'admin.faqs.show',
+        'edit' => 'admin.faqs.edit',
+        'update' => 'admin.faqs.update',
+        'destroy' => 'admin.faqs.destroy',
+    ]);
 });

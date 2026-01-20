@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@yield('title', 'Admin Panel - Margo Manpower')</title>
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/margo_logo_circle.png') }}">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -275,6 +276,115 @@
       color: var(--primary);
     }
 
+    /* Action Buttons - Consistent Design */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border-radius: 6px;
+      border: 1px solid;
+      font-size: 13px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      margin-right: 6px;
+    }
+
+    .btn-action:last-child {
+      margin-right: 0;
+    }
+
+    .btn-action i {
+      font-size: 13px;
+    }
+
+    /* Edit Action */
+    .btn-action-edit {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-action-edit:hover {
+      background: rgba(15, 111, 179, 0.1);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* View Action */
+    .btn-action-view {
+      border-color: #3b82f6;
+      color: #3b82f6;
+      background: transparent;
+    }
+
+    .btn-action-view:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: #3b82f6;
+      color: #3b82f6;
+      transform: translateY(-1px);
+    }
+
+    /* Delete Action */
+    .btn-action-delete {
+      border-color: #ef4444;
+      color: #ef4444;
+      background: transparent;
+    }
+
+    .btn-action-delete:hover {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: #ef4444;
+      color: #ef4444;
+      transform: translateY(-1px);
+    }
+
+    /* Approve Action */
+    .btn-action-approve {
+      border-color: #22c55e;
+      color: #22c55e;
+      background: transparent;
+    }
+
+    .btn-action-approve:hover {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: #22c55e;
+      color: #22c55e;
+      transform: translateY(-1px);
+    }
+
+    /* Reject Action */
+    .btn-action-reject {
+      border-color: #ef4444;
+      color: #ef4444;
+      background: transparent;
+    }
+
+    .btn-action-reject:hover {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: #ef4444;
+      color: #ef4444;
+      transform: translateY(-1px);
+    }
+
+    /* Download/View Document Action */
+    .btn-action-download {
+      border-color: var(--text-secondary);
+      color: var(--text-secondary);
+      background: transparent;
+    }
+
+    .btn-action-download:hover {
+      background: rgba(107, 114, 128, 0.1);
+      border-color: var(--text-secondary);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
     /* Table - Vimeo Style */
     .admin-table {
       border-radius: 8px;
@@ -442,7 +552,7 @@
   </div>
 
   <nav class="navbar-nav">
-    <a href="{{ route('home') }}" class="nav-link">
+    <a href="{{ localized_route('home') }}" class="nav-link">
       <i class="fas fa-home"></i>
       <span>View Site</span>
     </a>
@@ -483,7 +593,7 @@
 
     <div class="dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-user-circle"></i>
+        <img src="{{ asset('assets/img/margo_logo_circle.png') }}" alt="Admin" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;">
         <span>Admin</span>
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -528,6 +638,10 @@
       <a href="{{ route('admin.applications') }}" class="nav-link {{ request()->routeIs('admin.applications') ? 'active' : '' }}">
         <i class="fas fa-file-alt"></i>
         <span>Applications</span>
+      </a>
+      <a href="{{ route('admin.faqs.index') }}" class="nav-link {{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
       </a>
       <a href="{{ route('admin.settings') }}" class="nav-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
         <i class="fas fa-cog"></i>

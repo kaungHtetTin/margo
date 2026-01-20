@@ -304,7 +304,7 @@
       </form>
 
       <div class="back-link">
-        <a href="{{ route('home') }}">
+        <a href="{{ localized_route('home') }}">
           <i class="fas fa-arrow-left me-2"></i>Back to Home
         </a>
       </div>

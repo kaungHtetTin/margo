@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Ensure helper file is loaded
+        if (file_exists($helperPath = app_path('Helpers/LocaleHelper.php'))) {
+            require_once $helperPath;
+        }
     }
 }

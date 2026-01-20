@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@yield('title', 'Margo Manpower Co., Ltd')</title>
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/margo_logo_circle.png') }}">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -63,14 +64,27 @@
       color: var(--text-primary) !important;
       text-decoration: none;
       letter-spacing: -0.02em;
-      padding: 16px 0;
+      padding: 12px 0;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      transition: opacity 0.2s ease;
+    }
+
+    .navbar-brand:hover {
+      opacity: 0.8;
     }
 
     .navbar-brand img {
-      height: 32px;
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .navbar-brand span {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
     .navbar-nav {
@@ -85,11 +99,94 @@
       border-radius: 6px;
       transition: all 0.2s ease;
       text-decoration: none;
+      position: relative;
     }
 
     .navbar-nav .nav-link:hover {
       background: var(--bg-hover);
       color: var(--primary) !important;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: var(--primary) !important;
+      font-weight: 600;
+      background: rgba(15, 111, 179, 0.08);
+    }
+
+    .navbar-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-switcher .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .language-switcher .dropdown-toggle:hover {
+      background: var(--bg-hover);
+      color: var(--primary);
+    }
+
+    .language-switcher .dropdown-menu {
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 8px;
+      min-width: 150px;
+    }
+
+    .language-switcher .dropdown-item {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .language-switcher .dropdown-item:hover {
+      background: var(--bg-hover);
+      color: var(--primary);
+    }
+
+    .language-switcher .dropdown-item.active {
+      background: rgba(15, 111, 179, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .language-switcher .flag-icon {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
     }
 
     .navbar-toggler {
@@ -302,18 +399,139 @@
       background: #ffffff;
       border-top: 1px solid var(--border-color);
       color: var(--text-primary);
-      padding: 60px 0 40px 0;
+      padding: 60px 0 30px 0;
     }
 
-    footer p {
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h5 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-section p,
+    .footer-section a {
       font-size: 14px;
       color: var(--text-secondary);
+      text-decoration: none;
+      line-height: 1.8;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
       margin: 0;
     }
 
-    footer small {
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-links i {
+      font-size: 12px;
+      width: 16px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-contact-item i {
+      color: var(--primary);
+      font-size: 16px;
+      margin-top: 2px;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-item div {
+      flex: 1;
+    }
+
+    .footer-contact-item strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .footer-contact-item span {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 30px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 8px 0;
+    }
+
+    .footer-bottom small {
       font-size: 13px;
       color: var(--text-secondary);
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-hover);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
     }
 
     /* Text Utilities */
@@ -345,22 +563,65 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="margo-logo.png" alt="Margo Logo" height="32">
-      <span>MARGO</span>
+    <a class="navbar-brand" href="{{ localized_route('home') }}">
+      <img src="{{ asset('assets/img/margo_logo_circle.png') }}" alt="Margo Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+      <span style="">MARGO</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('courses') }}">Courses</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('blogs') }}">Blogs</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Admin</a></li>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ localized_route('home') }}">{{ __('nav.home') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ localized_route('services') }}">{{ __('nav.services') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('courses') || request()->routeIs('course.detail') ? 'active' : '' }}" href="{{ localized_route('courses') }}">{{ __('nav.courses') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('blogs') ? 'active' : '' }}" href="{{ localized_route('blogs') }}">{{ __('nav.blogs') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}" href="{{ localized_route('register') }}">{{ __('nav.apply_job') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ localized_route('contact') }}">{{ __('nav.contact') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('faq') ? 'active' : '' }}" href="{{ localized_route('faq') }}">{{ __('nav.faq') }}</a>
+        </li>
+        <li class="nav-item">
+          <div class="language-switcher">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-globe"></i>
+              <span>{{ strtoupper(app()->getLocale()) }}</span>
+              <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="{{ route('locale.switch', 'en') }}">
+                  <span>🇬🇧</span>
+                  <span>English</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item {{ app()->getLocale() === 'ja' ? 'active' : '' }}" href="{{ route('locale.switch', 'ja') }}">
+                  <span>🇯🇵</span>
+                  <span>日本語</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item {{ app()->getLocale() === 'my' ? 'active' : '' }}" href="{{ route('locale.switch', 'my') }}">
+                  <span>🇲🇲</span>
+                  <span>မြန်မာ</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
@@ -370,9 +631,80 @@
 
 <!-- Footer -->
 <footer>
-  <div class="container text-center">
-    <p class="mb-1">© 2026 Margo Manpower Co., Ltd</p>
-    <small>Overseas Employment & Recruitment Services</small>
+  <div class="container">
+    <div class="footer-content">
+      <!-- Company Info -->
+      <div class="footer-section">
+        <h5>Margo Manpower</h5>
+        <p>Connecting Myanmar workers with trusted international employers. Your gateway to overseas employment opportunities.</p>
+        <div style="margin-top: 20px; display: flex; gap: 12px;">
+          <a href="#" class="social-link" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="{{ localized_route('home') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.home') }}</a></li>
+          <li><a href="{{ localized_route('services') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.services') }}</a></li>
+          <li><a href="{{ localized_route('courses') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.courses') }}</a></li>
+          <li><a href="{{ localized_route('blogs') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.blogs') }}</a></li>
+          <li><a href="{{ localized_route('register') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.apply_job') }}</a></li>
+          <li><a href="{{ localized_route('faq') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.faq') }}</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="footer-section">
+        <h5>Contact Us</h5>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Address</strong>
+            <span>123 Business Street, Yangon, Myanmar</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <strong>Phone</strong>
+            <span>+95 1 234 5678</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong>Email</strong>
+            <span>info@margomanpower.com</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Working Hours</strong>
+            <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>© 2026 Margo Manpower Co., Ltd. All rights reserved.</p>
+      <small>Overseas Employment & Recruitment Services</small>
+    </div>
   </div>
 </footer>
 
