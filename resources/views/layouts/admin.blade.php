@@ -490,7 +490,14 @@
         <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i>Profile</a></li>
         <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i>Settings</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        <li>
+          <form method="POST" action="{{ route('admin.logout') }}" style="margin: 0;">
+            @csrf
+            <button type="submit" class="dropdown-item" style="border: none; background: none; width: 100%; text-align: left; padding: 10px 12px; cursor: pointer; color: var(--text-primary);">
+              <i class="fas fa-sign-out-alt"></i>Logout
+            </button>
+          </form>
+        </li>
       </ul>
     </div>
   </nav>
