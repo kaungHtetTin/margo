@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,9 @@ Route::group(['prefix' => '{locale}', 'middleware' => ['locale'], 'where' => ['l
         return view('services');
     })->name('services');
 
-    Route::get('/blogs', function () {
-        return view('blogs');
-    })->name('blogs');
+    // Blog Routes
+    Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+    Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blog.detail');
 
     Route::get('/register', function () {
         return view('register');

@@ -44,4 +44,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         'update' => 'admin.faqs.update',
         'destroy' => 'admin.faqs.destroy',
     ]);
+
+    // Blog Management Routes
+    // Remove body image route (must be before resource route)
+    Route::post('/blogs/{id}/remove-image', [\App\Http\Controllers\Admin\AdminBlogController::class, 'removeBodyImage'])->name('admin.blogs.remove-image');
+    
+    Route::resource('blogs', \App\Http\Controllers\Admin\AdminBlogController::class)->names([
+        'index' => 'admin.blogs.index',
+        'create' => 'admin.blogs.create',
+        'store' => 'admin.blogs.store',
+        'show' => 'admin.blogs.show',
+        'edit' => 'admin.blogs.edit',
+        'update' => 'admin.blogs.update',
+        'destroy' => 'admin.blogs.destroy',
+    ]);
 });

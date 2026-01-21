@@ -643,6 +643,10 @@
         <i class="fas fa-question-circle"></i>
         <span>FAQs</span>
       </a>
+      <a href="{{ route('admin.blogs.index') }}" class="nav-link {{ request()->routeIs('admin.blogs.*') ? 'active' : '' }}">
+        <i class="fas fa-blog"></i>
+        <span>Blogs</span>
+      </a>
       <a href="{{ route('admin.settings') }}" class="nav-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
         <i class="fas fa-cog"></i>
         <span>Settings</span>

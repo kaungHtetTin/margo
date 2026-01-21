@@ -582,7 +582,7 @@
           <a class="nav-link {{ request()->routeIs('courses') || request()->routeIs('course.detail') ? 'active' : '' }}" href="{{ localized_route('courses') }}">{{ __('nav.courses') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('blogs') ? 'active' : '' }}" href="{{ localized_route('blogs') }}">{{ __('nav.blogs') }}</a>
+          <a class="nav-link {{ request()->routeIs('blogs') || request()->routeIs('blog.detail') ? 'active' : '' }}" href="{{ localized_route('blogs') }}">{{ __('nav.blogs') }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}" href="{{ localized_route('register') }}">{{ __('nav.apply_job') }}</a>

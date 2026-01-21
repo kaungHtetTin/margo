@@ -27,7 +27,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/LocaleHelper.php"
+            "app/Helpers/LocaleHelper.php",
+            "app/Helpers/StorageHelper.php"
         ]
     },
     "autoload-dev": {
