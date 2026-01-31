@@ -14,7 +14,7 @@
       <div class="col-lg-8">
         <div class="row g-4">
           <div class="col-md-6">
-            <div class="card" style="padding: 32px; text-align: center; border: 1px solid var(--border-color);">
+            <div class="card" style="text-align: center;">
               <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                 <i class="fas fa-envelope" style="color: var(--primary); font-size: 24px;"></i>
               </div>
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="card" style="padding: 32px; text-align: center; border: 1px solid var(--border-color);">
+            <div class="card" style="text-align: center;">
               <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                 <i class="fas fa-phone" style="color: var(--primary); font-size: 24px;"></i>
               </div>

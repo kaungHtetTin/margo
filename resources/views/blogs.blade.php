@@ -15,9 +15,7 @@
       <div class="row g-4">
         @foreach($blogs as $blog)
           <div class="col-md-4">
-            <div class="card" style="border: 1px solid var(--border-color); overflow: hidden; transition: all 0.2s ease; height: 100%; display: flex; flex-direction: column;" 
-                 onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0, 0, 0, 0.05)'">
+            <div class="card" style="overflow: hidden; display: flex; flex-direction: column; padding: 0;">
               
               <!-- Featured Image -->
               @if($blog->featured_image)

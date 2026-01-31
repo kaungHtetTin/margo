@@ -543,11 +543,25 @@
       background: #f9fafb !important;
     }
 
-    /* Cards */
+    /* Cards - Consistent with service-card design */
     .card {
-      border: 1px solid var(--border-color);
       border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 32px;
+      transition: all 0.2s ease;
+      height: 100%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-color: var(--primary);
+    }
+
+    .card-body {
+      padding: 24px;
     }
 
     /* Spacing */
@@ -585,7 +599,7 @@
           <a class="nav-link {{ request()->routeIs('blogs') || request()->routeIs('blog.detail') ? 'active' : '' }}" href="{{ localized_route('blogs') }}">{{ __('nav.blogs') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}" href="{{ localized_route('register') }}">{{ __('nav.apply_job') }}</a>
+          <a class="nav-link {{ request()->routeIs('job-forms*') ? 'active' : '' }}" href="{{ localized_route('job-forms') }}">{{ __('nav.apply_job') }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ localized_route('contact') }}">{{ __('nav.contact') }}</a>
@@ -661,7 +675,7 @@
           <li><a href="{{ localized_route('services') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.services') }}</a></li>
           <li><a href="{{ localized_route('courses') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.courses') }}</a></li>
           <li><a href="{{ localized_route('blogs') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.blogs') }}</a></li>
-          <li><a href="{{ localized_route('register') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.apply_job') }}</a></li>
+          <li><a href="{{ localized_route('job-forms') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.apply_job') }}</a></li>
           <li><a href="{{ localized_route('faq') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.faq') }}</a></li>
         </ul>
       </div>

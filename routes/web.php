@@ -58,6 +58,14 @@ Route::group(['prefix' => '{locale}', 'middleware' => ['locale'], 'where' => ['l
     // Courses Routes
     Route::get('/courses', [CourseController::class, 'index'])->name('courses');
     Route::get('/courses/{id}', [CourseController::class, 'show'])->name('course.detail');
+
+    // Job Application Routes
+    Route::get('/job-forms', [\App\Http\Controllers\JobApplicationController::class, 'index'])->name('job-forms');
+    Route::get('/job-forms/search', [\App\Http\Controllers\JobApplicationController::class, 'search'])->name('job-forms.search');
+    Route::get('/job-forms/search/results', [\App\Http\Controllers\JobApplicationController::class, 'searchResults'])->name('job-forms.search.results');
+    Route::get('/job-forms/{id}/apply', [\App\Http\Controllers\JobApplicationController::class, 'show'])->name('job-forms.apply');
+    Route::post('/job-forms/{id}/apply', [\App\Http\Controllers\JobApplicationController::class, 'store'])->name('job-forms.apply.store');
+    Route::get('/job-forms/{id}/success', [\App\Http\Controllers\JobApplicationController::class, 'success'])->name('job-forms.apply.success');
 });
 
 // Admin Login Routes

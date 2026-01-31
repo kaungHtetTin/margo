@@ -647,6 +647,14 @@
         <i class="fas fa-blog"></i>
         <span>Blogs</span>
       </a>
+      <a href="{{ route('admin.job-forms.index') }}" class="nav-link {{ request()->routeIs('admin.job-forms.*') ? 'active' : '' }}">
+        <i class="fas fa-clipboard-list"></i>
+        <span>Job Forms</span>
+      </a>
+      <a href="{{ route('admin.job-form-data.index') }}" class="nav-link {{ request()->routeIs('admin.job-form-data.*') ? 'active' : '' }}">
+        <i class="fas fa-list-ul"></i>
+        <span>Form Fields</span>
+      </a>
       <a href="{{ route('admin.settings') }}" class="nav-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
         <i class="fas fa-cog"></i>
         <span>Settings</span>

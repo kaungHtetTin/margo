@@ -12,7 +12,7 @@
         <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: 16px;">
           Join thousands of workers who have found their dream jobs overseas
         </p>
-        <div class="card" style="padding: 40px; border: 1px solid var(--border-color);">
+        <div class="card" style="padding: 40px;">
           <form>
             <div class="mb-3">
               <label for="fullName" style="display: block; font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px;">Full Name</label>

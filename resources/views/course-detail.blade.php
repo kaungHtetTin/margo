@@ -51,7 +51,7 @@
         @if($course->curriculum)
           <div style="margin-bottom: 32px;">
             <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">Course Curriculum</h3>
-            <div class="card" style="border: 1px solid var(--border-color); padding: 24px;">
+            <div class="card">
               @if(is_array($course->curriculum))
                 <ul style="list-style: none; padding: 0; margin: 0;">
                   @foreach($course->curriculum as $item)
@@ -73,7 +73,7 @@
       <div class="col-lg-4">
         <div style="position: sticky; top: 100px;">
           <!-- Course Info Card -->
-          <div class="card" style="border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+          <div class="card" style="margin-bottom: 24px;">
             @if($course->price)
               <div style="margin-bottom: 20px;">
                 <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">Course Price</div>
@@ -128,7 +128,7 @@
 
           <!-- Teacher Card -->
           @if($course->teacher)
-            <div class="card" style="border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
+            <div class="card">
               <h4 style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">Instructor</h4>
               <div style="display: flex; align-items: flex-start; gap: 16px;">
                 @if($course->teacher->image)

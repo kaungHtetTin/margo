@@ -15,7 +15,7 @@
         @if($faqs->count() > 0)
           <div class="accordion" id="faqAccordion">
             @foreach($faqs as $index => $faq)
-              <div class="card mb-3" style="border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
+              <div class="card mb-3" style="overflow: hidden; padding: 0;">
                 <div class="card-header" style="background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 0;">
                   <button class="btn btn-link w-100 text-left" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ $faq->id }}" style="padding: 20px; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 16px; display: flex; justify-content: space-between; align-items: center;">
                     <span>{{ $faq->question }}</span>

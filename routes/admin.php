@@ -58,4 +58,26 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         'update' => 'admin.blogs.update',
         'destroy' => 'admin.blogs.destroy',
     ]);
+
+    // Job Forms Management Routes
+    Route::resource('job-forms', \App\Http\Controllers\Admin\AdminJobFormController::class)->names([
+        'index' => 'admin.job-forms.index',
+        'create' => 'admin.job-forms.create',
+        'store' => 'admin.job-forms.store',
+        'show' => 'admin.job-forms.show',
+        'edit' => 'admin.job-forms.edit',
+        'update' => 'admin.job-forms.update',
+        'destroy' => 'admin.job-forms.destroy',
+    ]);
+
+    // Job Form Data Management Routes
+    Route::resource('job-form-data', \App\Http\Controllers\Admin\AdminJobFormDataController::class)->names([
+        'index' => 'admin.job-form-data.index',
+        'create' => 'admin.job-form-data.create',
+        'store' => 'admin.job-form-data.store',
+        'show' => 'admin.job-form-data.show',
+        'edit' => 'admin.job-form-data.edit',
+        'update' => 'admin.job-form-data.update',
+        'destroy' => 'admin.job-form-data.destroy',
+    ]);
 });

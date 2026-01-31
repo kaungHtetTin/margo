@@ -113,7 +113,7 @@
         @endif
 
         <!-- Share Section -->
-        <div class="card" style="border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+        <div class="card" style="margin-bottom: 32px;">
           <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 20px;">Share this article</h3>
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             @php
@@ -191,7 +191,7 @@
             <div class="row g-4">
               @foreach($relatedBlogs as $relatedBlog)
                 <div class="col-md-6">
-                  <div class="card" style="border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; height: 100%;">
+                  <div class="card" style="overflow: hidden; padding: 0;">
                     @if($relatedBlog->featured_image)
                       <a href="{{ localized_route('blog.detail', ['slug' => $relatedBlog->slug]) }}" style="text-decoration: none; display: block;">
                         <img src="{{ storage_url($relatedBlog->featured_image) }}" alt="{{ $relatedBlog->title }}" style="width: 100%; height: 200px; object-fit: cover;">
@@ -233,7 +233,7 @@
         <div>
           <!-- Latest Blogs -->
           @if(isset($latestBlogs) && $latestBlogs->count() > 0)
-            <div class="card" style="border: 1px solid var(--border-color); border-radius: 12px; padding: 0; margin-bottom: 24px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div class="card" style="padding: 0; margin-bottom: 24px; overflow: hidden;">
               <!-- Section Header -->
               <div style="padding: 20px 24px; border-bottom: 2px solid var(--primary); background: linear-gradient(135deg, rgba(15, 111, 179, 0.05), rgba(15, 111, 179, 0.02));">
                 <h4 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0; display: flex; align-items: center; gap: 10px; letter-spacing: -0.01em;">
@@ -294,7 +294,7 @@
 
           <!-- Related Blogs -->
           @if(isset($relatedBlogs) && $relatedBlogs->count() > 0)
-            <div class="card" style="border: 1px solid var(--border-color); border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div class="card" style="padding: 0; overflow: hidden;">
               <!-- Section Header -->
               <div style="padding: 20px 24px; border-bottom: 2px solid var(--primary); background: linear-gradient(135deg, rgba(15, 111, 179, 0.05), rgba(15, 111, 179, 0.02));">
                 <h4 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0; display: flex; align-items: center; gap: 10px; letter-spacing: -0.01em;">
