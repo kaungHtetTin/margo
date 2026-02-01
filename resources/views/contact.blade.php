@@ -11,24 +11,43 @@
       Get in touch with us for inquiries about our services, job opportunities, or any questions you may have.
     </p>
     <div class="row justify-content-center">
-      <div class="col-lg-8">
+      <div class="col-lg-10">
         <div class="row g-4">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="card" style="text-align: center;">
               <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                 <i class="fas fa-envelope" style="color: var(--primary); font-size: 24px;"></i>
               </div>
               <h5 style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Email</h5>
-              <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">info@margomanpower.com</p>
+              <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">
+                @if(!empty($siteSettings['contact_email']))
+                  <a href="mailto:{{ $siteSettings['contact_email'] }}" style="color: inherit; text-decoration: none;">{{ $siteSettings['contact_email'] }}</a>
+                @else
+                  info@margomanpower.com
+                @endif
+              </p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="card" style="text-align: center;">
               <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                 <i class="fas fa-phone" style="color: var(--primary); font-size: 24px;"></i>
               </div>
               <h5 style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Phone</h5>
-              <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">+95 xxx xxx xxx</p>
+              <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">
+                {{ $siteSettings['phone_number'] ?? '+95 xxx xxx xxx' }}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <i class="fas fa-map-marker-alt" style="color: var(--primary); font-size: 24px;"></i>
+              </div>
+              <h5 style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Address</h5>
+              <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">
+                {{ $siteSettings['address'] ?? 'Yangon, Myanmar' }}
+              </p>
             </div>
           </div>
         </div>

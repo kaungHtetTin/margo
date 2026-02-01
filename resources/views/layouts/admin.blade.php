@@ -598,7 +598,7 @@
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i>Profile</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i>Settings</a></li>
+        <li><a class="dropdown-item" href="{{ route('admin.settings') }}"><i class="fas fa-cog"></i>Settings</a></li>
         <li><hr class="dropdown-divider"></li>
         <li>
           <form method="POST" action="{{ route('admin.logout') }}" style="margin: 0;">

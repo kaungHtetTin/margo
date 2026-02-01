@@ -30,9 +30,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         return view('admin.applications');
     })->name('admin.applications');
 
-    Route::get('/settings', function () {
-        return view('admin.settings');
-    })->name('admin.settings');
+    Route::get('/settings', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'index'])->name('admin.settings');
+    Route::post('/settings/general', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateGeneral'])->name('admin.settings.general');
+    Route::post('/settings/email', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateEmail'])->name('admin.settings.email');
 
     // FAQ Management Routes
     Route::resource('faqs', \App\Http\Controllers\Admin\AdminFaqController::class)->names([

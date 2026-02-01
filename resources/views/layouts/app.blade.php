@@ -215,15 +215,14 @@
     }
 
     .hero-overlay {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.2);
       padding: 80px 60px;
       color: #ffffff;
       max-width: 800px;
       text-align: center;
       border-radius: 16px;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .hero-overlay h1 {
@@ -571,6 +570,7 @@
   </style>
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  @stack('styles')
 </head>
 <body>
 
@@ -649,8 +649,8 @@
     <div class="footer-content">
       <!-- Company Info -->
       <div class="footer-section">
-        <h5>Margo Manpower</h5>
-        <p>Connecting Myanmar workers with trusted international employers. Your gateway to overseas employment opportunities.</p>
+        <h5>{{ $siteSettings['company_name'] ?? 'Margo Manpower' }}</h5>
+        <p>{{ $siteSettings['company_description'] ?? 'Connecting Myanmar workers with trusted international employers. Your gateway to overseas employment opportunities.' }}</p>
         <div style="margin-top: 20px; display: flex; gap: 12px;">
           <a href="#" class="social-link" title="Facebook">
             <i class="fab fa-facebook-f"></i>
@@ -687,28 +687,28 @@
           <i class="fas fa-map-marker-alt"></i>
           <div>
             <strong>Address</strong>
-            <span>123 Business Street, Yangon, Myanmar</span>
+            <span>{{ $siteSettings['address'] ?? 'Yangon, Myanmar' }}</span>
           </div>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-phone"></i>
           <div>
             <strong>Phone</strong>
-            <span>+95 1 234 5678</span>
+            <span>{{ $siteSettings['phone_number'] ?? '+95 1 234 5678' }}</span>
           </div>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-envelope"></i>
           <div>
             <strong>Email</strong>
-            <span>info@margomanpower.com</span>
+            <span>{{ $siteSettings['contact_email'] ?? 'info@margomanpower.com' }}</span>
           </div>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-clock"></i>
           <div>
             <strong>Working Hours</strong>
-            <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+            <span>{{ $siteSettings['working_hours'] ?? 'Mon - Fri: 9:00 AM - 6:00 PM' }}</span>
           </div>
         </div>
       </div>
@@ -716,8 +716,8 @@
 
     <!-- Footer Bottom -->
     <div class="footer-bottom">
-      <p>© 2026 Margo Manpower Co., Ltd. All rights reserved.</p>
-      <small>Overseas Employment & Recruitment Services</small>
+      <p>© {{ date('Y') }} {{ $siteSettings['company_name'] ?? 'Margo Manpower Co., Ltd' }}. All rights reserved.</p>
+      <small>{{ $siteSettings['company_description'] ?? 'Overseas Employment & Recruitment Services' }}</small>
     </div>
   </div>
 </footer>

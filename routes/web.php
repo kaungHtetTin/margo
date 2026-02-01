@@ -31,7 +31,12 @@ Route::get('/', function () {
 // Client routes with locale support
 Route::group(['prefix' => '{locale}', 'middleware' => ['locale'], 'where' => ['locale' => 'en|ja|my']], function () {
     Route::get('/', function () {
-        return view('home');
+        $latestBlogs = \App\Models\Blog::published()
+            ->with('author')
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+        return view('home', compact('latestBlogs'));
     })->name('home');
 
     Route::get('/services', function () {
