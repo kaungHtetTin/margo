@@ -34,6 +34,28 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/settings/general', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateGeneral'])->name('admin.settings.general');
     Route::post('/settings/email', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateEmail'])->name('admin.settings.email');
 
+    // Teacher Management Routes
+    Route::resource('teachers', \App\Http\Controllers\Admin\AdminTeacherController::class)->names([
+        'index' => 'admin.teachers.index',
+        'create' => 'admin.teachers.create',
+        'store' => 'admin.teachers.store',
+        'show' => 'admin.teachers.show',
+        'edit' => 'admin.teachers.edit',
+        'update' => 'admin.teachers.update',
+        'destroy' => 'admin.teachers.destroy',
+    ]);
+
+    // Course Management Routes
+    Route::resource('courses', \App\Http\Controllers\Admin\AdminCourseController::class)->names([
+        'index' => 'admin.courses.index',
+        'create' => 'admin.courses.create',
+        'store' => 'admin.courses.store',
+        'show' => 'admin.courses.show',
+        'edit' => 'admin.courses.edit',
+        'update' => 'admin.courses.update',
+        'destroy' => 'admin.courses.destroy',
+    ]);
+
     // FAQ Management Routes
     Route::resource('faqs', \App\Http\Controllers\Admin\AdminFaqController::class)->names([
         'index' => 'admin.faqs.index',

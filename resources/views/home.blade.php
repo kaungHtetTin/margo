@@ -21,8 +21,213 @@
   </div>
 </section>
 
+<!-- Company Section -->
+<section id="company" style="padding-top: 100px; padding-bottom: 80px; background: #f9fafb;">
+  <div class="container">
+    <div class="gallery-header" data-aos="fade-up">
+      <span class="gallery-label">{{ __('common.company_label') }}</span>
+      <h2 class="gallery-title">{{ $siteSettings['company_name'] ?? __('common.company_name') }}</h2>
+      <p class="gallery-subtitle">{{ $siteSettings['company_description'] ?? __('common.company_tagline') }}</p>
+      <div class="gallery-title-line"></div>
+    </div>
+
+    <!-- About Our Company -->
+    <div class="row align-items-center mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="company-img-placeholder" style="aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(15, 111, 179, 0.08) 0%, rgba(41, 169, 225, 0.12) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-secondary); border: 1px dashed var(--border-color);">
+          <i class="fas fa-building" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
+          <span style="font-size: 13px;">{{ __('common.company_label') }} {{ __('common.view') }}</span>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">{{ __('common.about_our_company') }}</h3>
+        <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.75;">{{ __('common.about_company_text') }}</p>
+      </div>
+    </div>
+
+    <!-- Vision and Mission -->
+    <div class="row g-4 mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
+      <div class="col-md-6">
+        <div style="padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+            <i class="fas fa-eye" style="font-size: 22px; color: var(--primary);"></i>
+          </div>
+          <h4 style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">{{ __('common.vision_title') }}</h4>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0;">{{ __('common.vision_text') }}</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div style="padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+            <i class="fas fa-bullseye" style="font-size: 22px; color: var(--primary);"></i>
+          </div>
+          <h4 style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">{{ __('common.mission_title') }}</h4>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0;">{{ __('common.mission_text') }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meet Our Team -->
+    <div class="row align-items-center mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
+      <div class="col-lg-5 order-lg-2 mb-4 mb-lg-0">
+        <div class="company-img-placeholder" style="aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(15, 111, 179, 0.08) 0%, rgba(41, 169, 225, 0.12) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-secondary); border: 1px dashed var(--border-color);">
+          <i class="fas fa-users" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
+          <span style="font-size: 13px;">{{ __('common.meet_our_team') }}</span>
+        </div>
+      </div>
+      <div class="col-lg-7 order-lg-1">
+        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">{{ __('common.meet_our_team') }}</h3>
+        <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.75;">{{ __('common.meet_team_text') }}</p>
+      </div>
+    </div>
+
+    <!-- Overseas Employment -->
+    <div class="mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">{{ __('common.overseas_employment') }}</h3>
+        <p style="font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto;">{{ __('common.overseas_employment_tagline') }}</p>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4">
+          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-user-plus" style="font-size: 18px; color: var(--primary);"></i>
+            </div>
+            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_recruiting') }}</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-chalkboard-teacher" style="font-size: 18px; color: var(--primary);"></i>
+            </div>
+            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_training') }}</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-chart-line" style="font-size: 18px; color: var(--primary);"></i>
+            </div>
+            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_development') }}</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-briefcase" style="font-size: 18px; color: var(--primary);"></i>
+            </div>
+            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_employment') }}</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-tasks" style="font-size: 18px; color: var(--primary);"></i>
+            </div>
+            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_kpi_tracking') }}</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-money-bill-wave" style="font-size: 18px; color: var(--primary);"></i>
+            </div>
+            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_salary_management') }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legitimacy and Confidence -->
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="company-img-placeholder" style="aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(15, 111, 179, 0.08) 0%, rgba(41, 169, 225, 0.12) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-secondary); border: 1px dashed var(--border-color);">
+          <i class="fas fa-shield-alt" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
+          <span style="font-size: 13px;">{{ __('common.legitimacy_confidence') }}</span>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">{{ __('common.legitimacy_confidence') }}</h3>
+        <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.75;">{{ __('common.legitimacy_text') }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Courses Section -->
+<section id="latest-courses" style="padding-top: 80px; padding-bottom: 80px; background: #ffffff;">
+  <div class="container">
+    <div class="gallery-header" data-aos="fade-up">
+      <span class="gallery-label">{{ __('common.courses_label') }}</span>
+      <h2 class="gallery-title">{{ __('common.available_courses') }}</h2>
+      <p class="gallery-subtitle">{{ __('common.courses_tagline') }}</p>
+      <div class="gallery-title-line"></div>
+    </div>
+
+    @if(isset($latestCourses) && $latestCourses->count() > 0)
+      <div class="row g-4">
+        @foreach($latestCourses as $course)
+          <div class="col-md-4">
+            <div class="card" style="overflow: hidden; display: flex; flex-direction: column; padding: 0; height: 100%; border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); transition: all 0.2s ease;">
+              <a href="{{ localized_route('course.detail', ['id' => $course->id]) }}" style="text-decoration: none; display: block; flex: 1;">
+                <div style="padding: 24px; flex: 1; display: flex; flex-direction: column;">
+                  <div style="margin-bottom: 12px;">
+                    <span style="display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(15, 111, 179, 0.1); color: var(--primary);">
+                      {{ ucfirst($course->level ?? 'beginner') }}
+                    </span>
+                  </div>
+                  <h5 style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">
+                    {{ Str::limit($course->title, 55) }}
+                  </h5>
+                  @if($course->description)
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.6; flex: 1;">
+                      {{ Str::limit(strip_tags($course->description), 100) }}
+                    </p>
+                  @endif
+                  <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-secondary);">
+                    @if($course->duration)
+                      <span style="display: flex; align-items: center; gap: 4px;"><i class="fas fa-clock"></i> {{ $course->duration }}</span>
+                    @endif
+                    @if($course->day)
+                      <span style="display: flex; align-items: center; gap: 4px;"><i class="fas fa-calendar-day"></i> {{ $course->day }}</span>
+                    @endif
+                    @if($course->time)
+                      <span style="display: flex; align-items: center; gap: 4px;"><i class="fas fa-clock"></i> {{ $course->time }}</span>
+                    @endif
+                  </div>
+                </div>
+              </a>
+              <div style="padding: 16px 24px; background: #f9fafb; border-top: 1px solid var(--border-color);">
+                <a href="{{ localized_route('course.detail', ['id' => $course->id]) }}" style="font-size: 14px; color: var(--primary); font-weight: 500; text-decoration: none;">
+                  {{ __('common.view_details') }} →
+                </a>
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="{{ localized_route('courses') }}" class="btn btn-outline-primary">
+          {{ __('common.view_all_courses') }}
+        </a>
+      </div>
+    @else
+      <div style="text-align: center; padding: 60px 20px;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+          <i class="fas fa-graduation-cap" style="font-size: 36px; color: var(--primary);"></i>
+        </div>
+        <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">No Courses Available</h3>
+        <p style="font-size: 14px; color: var(--text-secondary);">Check back soon for new course offerings.</p>
+        <a href="{{ localized_route('courses') }}" class="btn btn-outline-primary" style="margin-top: 16px;">{{ __('common.courses_label') }}</a>
+      </div>
+    @endif
+  </div>
+</section>
+
 <!-- Latest Blog Section -->
-<section id="latest-blogs" style="padding-top: 120px; background: #f9fafb;">
+<section id="latest-blogs" style="padding-top: 80px; padding-bottom: 80px; background: #f9fafb;">
   <div class="container">
     <div class="gallery-header" data-aos="fade-up">
       <span class="gallery-label">{{ __('common.blog_label') }}</span>

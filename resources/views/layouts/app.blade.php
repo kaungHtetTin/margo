@@ -284,38 +284,6 @@
       }
     }
 
-    /* Services - Vimeo Style */
-    .service-card {
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      padding: 32px;
-      transition: all 0.2s ease;
-      height: 100%;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      border-color: var(--primary);
-    }
-
-    .service-card h5 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .service-card p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin: 0;
-    }
-
     /* Buttons - Vimeo Style */
     .btn-primary {
       background: var(--primary);
@@ -590,9 +558,6 @@
           <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ localized_route('home') }}">{{ __('nav.home') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ localized_route('services') }}">{{ __('nav.services') }}</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link {{ request()->routeIs('courses') || request()->routeIs('course.detail') ? 'active' : '' }}" href="{{ localized_route('courses') }}">{{ __('nav.courses') }}</a>
         </li>
         <li class="nav-item">
@@ -672,7 +637,6 @@
         <h5>Quick Links</h5>
         <ul class="footer-links">
           <li><a href="{{ localized_route('home') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.home') }}</a></li>
-          <li><a href="{{ localized_route('services') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.services') }}</a></li>
           <li><a href="{{ localized_route('courses') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.courses') }}</a></li>
           <li><a href="{{ localized_route('blogs') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.blogs') }}</a></li>
           <li><a href="{{ localized_route('job-forms') }}"><i class="fas fa-chevron-right"></i> {{ __('nav.apply_job') }}</a></li>

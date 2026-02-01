@@ -36,12 +36,16 @@ Route::group(['prefix' => '{locale}', 'middleware' => ['locale'], 'where' => ['l
             ->latest('published_at')
             ->take(3)
             ->get();
-        return view('home', compact('latestBlogs'));
+        $latestCourses = \App\Models\Course::where('status', 'active')
+            ->where(function ($q) {
+                $q->where('is_open', true)->orWhereNull('is_open');
+            })
+            ->with('teacher')
+            ->orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
+        return view('home', compact('latestBlogs', 'latestCourses'));
     })->name('home');
-
-    Route::get('/services', function () {
-        return view('services');
-    })->name('services');
 
     // Blog Routes
     Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');

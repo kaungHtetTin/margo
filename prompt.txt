@@ -1,0 +1,15 @@
+Before Courses section add company section
+This section will have the following sub-section
+About Our company
+Vision and mission
+Meet Our Team
+Overseas Employment
+    Recruiting
+    Training
+    Development
+    Employment
+    KPI tracking
+    Salary Management
+Legitimacy and Confidence
+
+You can left image placeholder for some design.

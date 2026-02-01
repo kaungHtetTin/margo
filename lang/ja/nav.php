@@ -2,7 +2,6 @@
 
 return [
     'home' => 'ホーム',
-    'services' => 'サービス',
     'courses' => 'コース',
     'blogs' => 'ブログ',
     'apply_job' => '求人応募',

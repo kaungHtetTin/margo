@@ -14,6 +14,8 @@ class Course extends Model
         'description',
         'teacher_id',
         'duration',
+        'day',
+        'time',
         'price',
         'level',
         'image',
@@ -23,6 +25,7 @@ class Course extends Model
         'start_date',
         'end_date',
         'status',
+        'is_open',
     ];
 
     protected $casts = [
@@ -30,6 +33,7 @@ class Course extends Model
         'start_date' => 'date',
         'end_date' => 'date',
         'curriculum' => 'array',
+        'is_open' => 'boolean',
     ];
 
     /**

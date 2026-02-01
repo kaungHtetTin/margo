@@ -639,6 +639,14 @@
         <i class="fas fa-file-alt"></i>
         <span>Applications</span>
       </a>
+      <a href="{{ route('admin.teachers.index') }}" class="nav-link {{ request()->routeIs('admin.teachers.*') ? 'active' : '' }}">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span>Teachers</span>
+      </a>
+      <a href="{{ route('admin.courses.index') }}" class="nav-link {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Courses</span>
+      </a>
       <a href="{{ route('admin.faqs.index') }}" class="nav-link {{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
         <i class="fas fa-question-circle"></i>
         <span>FAQs</span>

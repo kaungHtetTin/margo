@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
             require_once $helperPath;
         }
 
-        // Share site settings with app layout (footer, contact section)
-        View::composer('layouts.app', function ($view) {
+        // Share site settings with app layout, home, and courses page
+        View::composer(['layouts.app', 'home', 'courses'], function ($view) {
             try {
                 $settings = Setting::getByGroup('general') ?: [];
             } catch (\Throwable $e) {

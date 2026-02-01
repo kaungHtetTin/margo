@@ -62,7 +62,7 @@ class LocaleController extends Controller
             }
             
             // Check if it's a known route pattern
-            $knownRoutes = ['services', 'courses', 'blogs', 'register', 'contact', 'faq'];
+            $knownRoutes = ['courses', 'blogs', 'register', 'contact', 'faq'];
             if (in_array($pathParts[0], $knownRoutes)) {
                 try {
                     $routeName = $pathParts[0];
