@@ -14,6 +14,7 @@ class JobApplicant extends Model
         'name',
         'phone',
         'emails',
+        'status',
     ];
 
     /**

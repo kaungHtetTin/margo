@@ -635,7 +635,7 @@
         <i class="fas fa-briefcase"></i>
         <span>Jobs</span>
       </a>
-      <a href="{{ route('admin.applications') }}" class="nav-link {{ request()->routeIs('admin.applications') ? 'active' : '' }}">
+      <a href="{{ route('admin.applications.index') }}" class="nav-link {{ request()->routeIs('admin.applications.*') ? 'active' : '' }}">
         <i class="fas fa-file-alt"></i>
         <span>Applications</span>
       </a>

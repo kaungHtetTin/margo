@@ -33,9 +33,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         'destroy' => 'admin.jobs.destroy',
     ]);
 
-    Route::get('/applications', function () {
-        return view('admin.applications');
-    })->name('admin.applications');
+    // Applications (Job Applications) Management - index, show, update, destroy only
+    Route::get('/applications', [\App\Http\Controllers\Admin\AdminApplicationController::class, 'index'])->name('admin.applications.index');
+    Route::get('/applications/{id}', [\App\Http\Controllers\Admin\AdminApplicationController::class, 'show'])->name('admin.applications.show');
+    Route::put('/applications/{id}', [\App\Http\Controllers\Admin\AdminApplicationController::class, 'update'])->name('admin.applications.update');
+    Route::delete('/applications/{id}', [\App\Http\Controllers\Admin\AdminApplicationController::class, 'destroy'])->name('admin.applications.destroy');
 
     Route::get('/settings', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'index'])->name('admin.settings');
     Route::post('/settings/general', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateGeneral'])->name('admin.settings.general');
