@@ -112,8 +112,8 @@
           </div>
         @endif
 
-        <!-- Share Section -->
-        <div class="card" style="margin-bottom: 32px;">
+        <!-- Share Section (height: auto overrides global .card height:100% so it doesn't stretch) -->
+        <div class="card blog-share-card" style="margin-bottom: 32px; height: auto;">
           <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 20px;">Share this article</h3>
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             @php

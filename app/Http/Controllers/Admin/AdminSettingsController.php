@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AdminSettingsController extends Controller
 {
@@ -14,9 +16,8 @@ class AdminSettingsController extends Controller
     public function index()
     {
         $general = Setting::getByGroup('general') ?: [];
-        $email = Setting::getByGroup('email') ?: [];
 
-        return view('admin.settings', compact('general', 'email'));
+        return view('admin.settings', compact('general'));
     }
 
     /**
@@ -40,24 +41,21 @@ class AdminSettingsController extends Controller
     }
 
     /**
-     * Update email settings.
+     * Update the authenticated admin user's password.
      */
-    public function updateEmail(Request $request)
+    public function updatePassword(Request $request)
     {
         $validated = $request->validate([
-            'smtp_host' => 'nullable|string|max:255',
-            'smtp_port' => 'nullable|integer|min:1|max:65535',
-            'smtp_username' => 'nullable|string|max:255',
-            'smtp_password' => 'nullable|string|max:255',
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', Password::defaults()],
+        ], [
+            'current_password.current_password' => 'The current password is incorrect.',
         ]);
 
-        // Don't overwrite password if left blank
-        if (empty($validated['smtp_password'])) {
-            unset($validated['smtp_password']);
-        }
+        $user = $request->user();
+        $user->password = Hash::make($validated['password']);
+        $user->save();
 
-        Setting::setMany($validated, 'email');
-
-        return redirect()->route('admin.settings')->with('success', 'Email settings updated successfully.');
+        return redirect()->route('admin.settings')->with('success', 'Password updated successfully.');
     }
 }

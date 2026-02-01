@@ -14,13 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-
-    Route::get('/users', function () {
-        return view('admin.users');
-    })->name('admin.users');
+    Route::get('/', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     // Jobs (Job Postings) Management Routes
     Route::resource('jobs', \App\Http\Controllers\Admin\AdminJobController::class)->names([
@@ -41,7 +35,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('/settings', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'index'])->name('admin.settings');
     Route::post('/settings/general', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateGeneral'])->name('admin.settings.general');
-    Route::post('/settings/email', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updateEmail'])->name('admin.settings.email');
+    Route::post('/settings/password', [\App\Http\Controllers\Admin\AdminSettingsController::class, 'updatePassword'])->name('admin.settings.password');
 
     // Teacher Management Routes
     Route::resource('teachers', \App\Http\Controllers\Admin\AdminTeacherController::class)->names([

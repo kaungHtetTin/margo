@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\JobApplicant;
 use App\Models\Setting;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -38,6 +40,17 @@ class AppServiceProvider extends ServiceProvider
                 $settings = [];
             }
             $view->with('siteSettings', $settings);
+        });
+
+        // New job application notifications for admin layout
+        View::composer('layouts.admin', function ($view) {
+            $newSince = Carbon::now()->subDays(7);
+            $newApplicationCount = JobApplicant::where('created_at', '>=', $newSince)->count();
+            $recentApplicationNotifications = JobApplicant::latest('created_at')->take(8)->get();
+            $view->with([
+                'newApplicationCount' => $newApplicationCount,
+                'recentApplicationNotifications' => $recentApplicationNotifications,
+            ]);
         });
     }
 }

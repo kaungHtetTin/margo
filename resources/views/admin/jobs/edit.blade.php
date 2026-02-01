@@ -65,7 +65,7 @@
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="company" class="form-label" style="font-weight: 500; color: var(--text-primary); margin-bottom: 8px;">Company</label>
+                <label for="company" class="form-label" style="font-weight: 500; color: var(--text-primary); margin-bottom: 8px;">Company <span class="text-muted" style="font-weight: 400;">(optional)</span></label>
                 <input type="text" class="form-control @error('company') is-invalid @enderror" id="company" name="company" value="{{ old('company', $job->company) }}" placeholder="Company name">
                 @error('company')
                   <div class="invalid-feedback">{{ $message }}</div>

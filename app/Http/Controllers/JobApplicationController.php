@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use App\Models\JobForm;
 use App\Models\JobApplicant;
 use App\Models\JobApplication;
@@ -21,8 +22,10 @@ class JobApplicationController extends Controller
             ->with('formData')
             ->latest()
             ->get();
+
+        $jobs = Job::active()->orderBy('posted_at', 'desc')->get();
         
-        return view('job-forms', compact('jobForms'));
+        return view('job-forms', compact('jobForms', 'jobs'));
     }
 
     /**

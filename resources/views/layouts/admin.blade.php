@@ -257,6 +257,7 @@
       background: #0d5a9a;
       transform: translateY(-1px);
       box-shadow: 0 4px 6px -1px rgba(15, 111, 179, 0.2);
+      color: #fff;
     }
 
     .btn-outline-primary {
@@ -560,34 +561,31 @@
     <div class="dropdown" style="position: relative;">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative;">
         <i class="fas fa-bell"></i>
-        <span class="badge bg-danger rounded-pill" style="position: absolute; top: -2px; right: -2px; font-size: 10px; padding: 2px 5px; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;">3</span>
+        @if(isset($newApplicationCount) && $newApplicationCount > 0)
+        <span class="badge bg-danger rounded-pill" style="position: absolute; top: -2px; right: -2px; font-size: 10px; padding: 2px 5px; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;">{{ $newApplicationCount > 99 ? '99+' : $newApplicationCount }}</span>
+        @endif
       </a>
       <ul class="dropdown-menu dropdown-menu-end" style="width: 320px;">
-        <li><h6 class="dropdown-header" style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: var(--text-primary);">Notifications</h6></li>
-        <li><a class="dropdown-item" href="#">
-          <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-user-plus" style="color: var(--primary); font-size: 14px;"></i>
+        <li><h6 class="dropdown-header" style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: var(--text-primary);">New job applications</h6></li>
+        @forelse(isset($recentApplicationNotifications) ? $recentApplicationNotifications : [] as $app)
+        <li>
+          <a class="dropdown-item" href="{{ route('admin.applications.show', $app->id) }}">
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+              <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(34, 197, 94, 0.1); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-file-alt" style="color: #22c55e; font-size: 14px;"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">{{ $app->created_at->diffForHumans() }}</div>
+                <div style="font-size: 14px; color: var(--text-primary); font-weight: 500;">{{ $app->name }}</div>
+              </div>
             </div>
-            <div style="flex: 1;">
-              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">2 min ago</div>
-              <div style="font-size: 14px; color: var(--text-primary); font-weight: 500;">New user registered</div>
-            </div>
-          </div>
-        </a></li>
-        <li><a class="dropdown-item" href="#">
-          <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(34, 197, 94, 0.1); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-file-alt" style="color: #22c55e; font-size: 14px;"></i>
-            </div>
-            <div style="flex: 1;">
-              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">15 min ago</div>
-              <div style="font-size: 14px; color: var(--text-primary); font-weight: 500;">Job application received</div>
-            </div>
-          </div>
-        </a></li>
+          </a>
+        </li>
+        @empty
+        <li><div class="dropdown-item text-muted" style="font-size: 13px;">No recent applications</div></li>
+        @endforelse
         <li><hr class="dropdown-divider" style="margin: 8px 0;"></li>
-        <li><a class="dropdown-item text-center" href="#" style="font-weight: 500; color: var(--primary);">View all notifications</a></li>
+        <li><a class="dropdown-item text-center" href="{{ route('admin.applications.index') }}" style="font-weight: 500; color: var(--primary);">View all applications</a></li>
       </ul>
     </div>
 
@@ -597,7 +595,7 @@
         <span>Admin</span>
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i>Profile</a></li>
+         
         <li><a class="dropdown-item" href="{{ route('admin.settings') }}"><i class="fas fa-cog"></i>Settings</a></li>
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -627,13 +625,13 @@
         <i class="fas fa-tachometer-alt"></i>
         <span>Dashboard</span>
       </a>
-      <a href="{{ route('admin.users') }}" class="nav-link {{ request()->routeIs('admin.users') ? 'active' : '' }}">
-        <i class="fas fa-users"></i>
-        <span>Users</span>
-      </a>
       <a href="{{ route('admin.jobs.index') }}" class="nav-link {{ request()->routeIs('admin.jobs.*') ? 'active' : '' }}">
         <i class="fas fa-briefcase"></i>
         <span>Jobs</span>
+      </a>
+      <a href="{{ route('admin.job-forms.index') }}" class="nav-link {{ request()->routeIs('admin.job-forms.*') ? 'active' : '' }}">
+        <i class="fas fa-clipboard-list"></i>
+        <span>Job Forms</span>
       </a>
       <a href="{{ route('admin.applications.index') }}" class="nav-link {{ request()->routeIs('admin.applications.*') ? 'active' : '' }}">
         <i class="fas fa-file-alt"></i>
@@ -647,22 +645,17 @@
         <i class="fas fa-graduation-cap"></i>
         <span>Courses</span>
       </a>
-      <a href="{{ route('admin.faqs.index') }}" class="nav-link {{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
-        <i class="fas fa-question-circle"></i>
-        <span>FAQs</span>
-      </a>
+  
       <a href="{{ route('admin.blogs.index') }}" class="nav-link {{ request()->routeIs('admin.blogs.*') ? 'active' : '' }}">
         <i class="fas fa-blog"></i>
         <span>Blogs</span>
       </a>
-      <a href="{{ route('admin.job-forms.index') }}" class="nav-link {{ request()->routeIs('admin.job-forms.*') ? 'active' : '' }}">
-        <i class="fas fa-clipboard-list"></i>
-        <span>Job Forms</span>
+
+      <a href="{{ route('admin.faqs.index') }}" class="nav-link {{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
       </a>
-      <a href="{{ route('admin.job-form-data.index') }}" class="nav-link {{ request()->routeIs('admin.job-form-data.*') ? 'active' : '' }}">
-        <i class="fas fa-list-ul"></i>
-        <span>Form Fields</span>
-      </a>
+
       <a href="{{ route('admin.settings') }}" class="nav-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
         <i class="fas fa-cog"></i>
         <span>Settings</span>

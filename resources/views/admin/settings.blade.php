@@ -69,78 +69,39 @@
         </div>
       </div>
 
-      <div class="admin-card mt-4">
-        <div class="card-header">
-          <h5 class="mb-0"><i class="fas fa-envelope me-2"></i>Email Settings</h5>
-        </div>
-        <div class="card-body">
-          <form method="POST" action="{{ route('admin.settings.email') }}">
-            @csrf
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label class="form-label">SMTP Host</label>
-                <input type="text" name="smtp_host" class="form-control" value="{{ old('smtp_host', $email['smtp_host'] ?? '') }}" placeholder="smtp.example.com">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">SMTP Port</label>
-                <input type="number" name="smtp_port" class="form-control" value="{{ old('smtp_port', $email['smtp_port'] ?? '') }}" placeholder="587">
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label class="form-label">SMTP Username</label>
-                <input type="email" name="smtp_username" class="form-control" value="{{ old('smtp_username', $email['smtp_username'] ?? '') }}" placeholder="noreply@example.com">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">SMTP Password</label>
-                <input type="password" name="smtp_password" class="form-control" placeholder="••••••••">
-                <small class="text-muted">Leave blank to keep current password</small>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-admin">
-              <i class="fas fa-save me-2"></i>Update Email Settings
-            </button>
-          </form>
-        </div>
-      </div>
     </div>
 
     <div class="col-md-4">
       <div class="admin-card">
         <div class="card-header">
-          <h5 class="mb-0"><i class="fas fa-image me-2"></i>Logo Settings</h5>
-        </div>
-        <div class="card-body text-center">
-          <img src="{{ asset('assets/img/margo_logo_circle.png') }}" alt="Current Logo" class="img-fluid mb-3" style="max-height: 100px;">
-          <br>
-          <button class="btn btn-outline-primary btn-sm" type="button" disabled>
-            <i class="fas fa-upload me-2"></i>Change Logo (Coming soon)
-          </button>
-        </div>
-      </div>
-
-      <div class="admin-card mt-4">
-        <div class="card-header">
-          <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Security</h5>
+          <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Change Password</h5>
         </div>
         <div class="card-body">
-          <div class="mb-3">
-            <label class="form-label">Admin Password</label>
-            <input type="password" class="form-control" placeholder="Current password">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">New Password</label>
-            <input type="password" class="form-control" placeholder="New password">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" placeholder="Confirm new password">
-          </div>
-          <button class="btn btn-admin w-100" type="button" disabled>
-            <i class="fas fa-key me-2"></i>Change Password (Coming soon)
-          </button>
+          <form method="POST" action="{{ route('admin.settings.password') }}">
+            @csrf
+            <div class="mb-3">
+              <label class="form-label" for="current_password">Current Password</label>
+              <input type="password" name="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror" placeholder="Current password" required autocomplete="current-password">
+              @error('current_password')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password">New Password</label>
+              <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="New password" required autocomplete="new-password">
+              @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+              <small class="text-muted">Min. 8 characters</small>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password_confirmation">Confirm New Password</label>
+              <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm new password" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn btn-admin w-100">
+              <i class="fas fa-key me-2"></i>Update Password
+            </button>
+          </form>
         </div>
       </div>
     </div>

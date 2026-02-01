@@ -88,7 +88,7 @@
                     <a href="{{ route('admin.job-forms.edit', $jobForm->id) }}" class="btn-action btn-action-edit" title="Edit">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="{{ route('admin.job-form-data.index', ['job_form_id' => $jobForm->id]) }}" class="btn-action btn-action-view" title="Manage Fields" style="background: var(--primary);">
+                    <a href="{{ route('admin.job-form-data.index', ['job_form_id' => $jobForm->id]) }}" class="btn-action btn-action-view" title="Manage Fields">
                       <i class="fas fa-list"></i>
                     </a>
                     <form action="{{ route('admin.job-forms.destroy', $jobForm->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to delete this job form?');">

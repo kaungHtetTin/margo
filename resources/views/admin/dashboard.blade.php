@@ -25,223 +25,147 @@
     <div class="stats-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
         <div>
-          <div class="stat-label">Total Users</div>
-          <div class="stat-number">1,245</div>
+          <div class="stat-label">Total Applications</div>
+          <div class="stat-number">{{ number_format($totalApplications) }}</div>
         </div>
         <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center;">
-          <i class="fas fa-users" style="color: var(--primary); font-size: 20px;"></i>
+          <i class="fas fa-file-alt" style="color: var(--primary); font-size: 20px;"></i>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #22c55e;">
-        <i class="fas fa-arrow-up" style="font-size: 11px;"></i>
-        <span>+12% from last month</span>
-      </div>
+      <div style="font-size: 13px; color: var(--text-secondary);">All time job applications</div>
     </div>
 
     <div class="stats-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
         <div>
           <div class="stat-label">Active Jobs</div>
-          <div class="stat-number">89</div>
+          <div class="stat-number">{{ number_format($activeJobs) }}</div>
         </div>
         <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34, 197, 94, 0.1); display: flex; align-items: center; justify-content: center;">
           <i class="fas fa-briefcase" style="color: #22c55e; font-size: 20px;"></i>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #22c55e;">
-        <i class="fas fa-arrow-up" style="font-size: 11px;"></i>
-        <span>+8% from last month</span>
-      </div>
+      <a href="{{ route('admin.jobs.index') }}" style="font-size: 13px; color: var(--primary); text-decoration: none;">View jobs</a>
     </div>
 
     <div class="stats-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
         <div>
-          <div class="stat-label">Applications</div>
-          <div class="stat-number">456</div>
+          <div class="stat-label">Applications This Month</div>
+          <div class="stat-number">{{ number_format($applicationsThisMonth) }}</div>
         </div>
         <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center;">
-          <i class="fas fa-file-alt" style="color: #3b82f6; font-size: 20px;"></i>
+          <i class="fas fa-calendar-alt" style="color: #3b82f6; font-size: 20px;"></i>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #3b82f6;">
-        <i class="fas fa-arrow-up" style="font-size: 11px;"></i>
-        <span>+15% from last month</span>
+      @if($applicationsMonthChange !== null)
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: {{ $applicationsMonthChange >= 0 ? '#22c55e' : '#ef4444' }};">
+        <i class="fas fa-arrow-{{ $applicationsMonthChange >= 0 ? 'up' : 'down' }}" style="font-size: 11px;"></i>
+        <span>{{ $applicationsMonthChange >= 0 ? '+' : '' }}{{ $applicationsMonthChange }}% from last month</span>
       </div>
+      @else
+      <div style="font-size: 13px; color: var(--text-secondary);">vs last month</div>
+      @endif
     </div>
 
     <div class="stats-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
         <div>
           <div class="stat-label">New This Week</div>
-          <div class="stat-number">23</div>
+          <div class="stat-number">{{ number_format($applicationsThisWeek) }}</div>
         </div>
         <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(245, 158, 11, 0.1); display: flex; align-items: center; justify-content: center;">
           <i class="fas fa-calendar-plus" style="color: #f59e0b; font-size: 20px;"></i>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #f59e0b;">
-        <i class="fas fa-arrow-up" style="font-size: 11px;"></i>
-        <span>+5% from last week</span>
+      @if($applicationsWeekChange !== null)
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: {{ $applicationsWeekChange >= 0 ? '#22c55e' : '#ef4444' }};">
+        <i class="fas fa-arrow-{{ $applicationsWeekChange >= 0 ? 'up' : 'down' }}" style="font-size: 11px;"></i>
+        <span>{{ $applicationsWeekChange >= 0 ? '+' : '' }}{{ $applicationsWeekChange }}% from last week</span>
+      </div>
+      @else
+      <div style="font-size: 13px; color: var(--text-secondary);">vs last week</div>
+      @endif
+    </div>
+  </div>
+
+  <!-- Charts Row: Applications per month & per year -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+    <div class="admin-card">
+      <div class="card-header">
+        <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">Applications per Month (Last 12 Months)</h6>
+      </div>
+      <div class="card-body">
+        <div style="height: 280px; position: relative;">
+          <canvas id="applicationsPerMonthChart" height="280"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="card-header">
+        <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">Applications per Year (Last 6 Years)</h6>
+      </div>
+      <div class="card-body">
+        <div style="height: 280px; position: relative;">
+          <canvas id="applicationsPerYearChart" height="280"></canvas>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Charts and Activity Row -->
-  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px;">
-    <!-- Chart Area -->
+  <!-- Recent Activity -->
+  <div style="margin-bottom: 32px;">
     <div class="admin-card">
       <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">Analytics Overview</h6>
-        <div class="dropdown">
-          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              style="color: var(--text-secondary); text-decoration: none; padding: 4px 8px; border-radius: 6px; transition: all 0.2s;">
-            <i class="fas fa-ellipsis-v" style="font-size: 14px;"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-            <div class="dropdown-header" style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">Chart Options:</div>
-            <a class="dropdown-item" href="#">Last 7 Days</a>
-            <a class="dropdown-item" href="#">Last 30 Days</a>
-            <a class="dropdown-item" href="#">Last 3 Months</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div style="height: 300px; background: #f9fafb; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-          <div style="text-align: center;">
-            <i class="fas fa-chart-line" style="font-size: 48px; color: var(--text-secondary); margin-bottom: 12px; opacity: 0.5;"></i>
-            <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">Chart visualization would be displayed here</p>
-            <small style="font-size: 12px; color: var(--text-secondary);">Integration with Chart.js or similar library</small>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recent Activity -->
-    <div class="admin-card">
-      <div class="card-header">
-        <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">Recent Activity</h6>
+        <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">Recent Applications</h6>
+        <a href="{{ route('admin.applications.index') }}" class="btn btn-sm btn-outline-primary">View all</a>
       </div>
       <div class="card-body" style="padding: 16px;">
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          <div style="display: flex; gap: 12px;">
-            <div style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-user-plus" style="color: var(--primary); font-size: 16px;"></i>
-            </div>
-            <div style="flex: 1;">
-              <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px;">New user registered</div>
-              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">John Doe joined the platform</div>
-              <div style="font-size: 12px; color: var(--text-secondary);">2 minutes ago</div>
-            </div>
-          </div>
-          <div style="display: flex; gap: 12px;">
-            <div style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(34, 197, 94, 0.1); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-file-alt" style="color: #22c55e; font-size: 16px;"></i>
-            </div>
-            <div style="flex: 1;">
-              <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px;">Job application received</div>
-              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">Application for Software Developer position</div>
-              <div style="font-size: 12px; color: var(--text-secondary);">15 minutes ago</div>
-            </div>
-          </div>
+          @forelse($recentApplications as $app)
           <div style="display: flex; gap: 12px;">
             <div style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-user-edit" style="color: #3b82f6; font-size: 16px;"></i>
+              <i class="fas fa-file-alt" style="color: #3b82f6; font-size: 16px;"></i>
             </div>
             <div style="flex: 1;">
-              <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px;">Profile updated</div>
-              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">Jane Smith updated her profile information</div>
-              <div style="font-size: 12px; color: var(--text-secondary);">1 hour ago</div>
+              <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px;">Job application</div>
+              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">{{ $app->name }} — {{ $app->job_applications_count }} form field(s)</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">{{ $app->created_at->diffForHumans() }}</div>
             </div>
+            <a href="{{ route('admin.applications.show', $app->id) }}" class="btn btn-sm btn-outline-primary" style="align-self: center;">View</a>
           </div>
-          <div style="display: flex; gap: 12px;">
-            <div style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(245, 158, 11, 0.1); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-briefcase" style="color: #f59e0b; font-size: 16px;"></i>
-            </div>
-            <div style="flex: 1;">
-              <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px;">New job posted</div>
-              <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">Marketing Manager position created</div>
-              <div style="font-size: 12px; color: var(--text-secondary);">2 hours ago</div>
-            </div>
-          </div>
+          @empty
+          <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">No recent applications.</p>
+          @endforelse
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Additional Content Row -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-    <!-- Quick Actions -->
+  <!-- Quick Actions -->
+  <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
     <div class="admin-card">
       <div class="card-header">
         <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">Quick Actions</h6>
       </div>
       <div class="card-body">
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-          <button class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%;">
+          <a href="{{ route('admin.jobs.create') }}" class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; text-decoration: none;">
             <i class="fas fa-plus-circle" style="font-size: 24px;"></i>
             <span style="font-size: 13px; font-weight: 500;">Add New Job</span>
-          </button>
-          <button class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%;">
-            <i class="fas fa-users" style="font-size: 24px;"></i>
-            <span style="font-size: 13px; font-weight: 500;">Manage Users</span>
-          </button>
-          <button class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%;">
+          </a>
+          <a href="{{ route('admin.applications.index') }}" class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; text-decoration: none;">
+            <i class="fas fa-file-alt" style="font-size: 24px;"></i>
+            <span style="font-size: 13px; font-weight: 500;">Applications</span>
+          </a>
+          <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; text-decoration: none;">
             <i class="fas fa-chart-bar" style="font-size: 24px;"></i>
-            <span style="font-size: 13px; font-weight: 500;">View Reports</span>
-          </button>
-          <button class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%;">
+            <span style="font-size: 13px; font-weight: 500;">Dashboard</span>
+          </a>
+          <a href="{{ route('admin.settings') }}" class="btn btn-outline-primary" style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; text-decoration: none;">
             <i class="fas fa-cog" style="font-size: 24px;"></i>
             <span style="font-size: 13px; font-weight: 500;">Settings</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- System Status -->
-    <div class="admin-card">
-      <div class="card-header">
-        <h6 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">System Status</h6>
-      </div>
-      <div class="card-body">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 14px; color: var(--text-primary); font-weight: 500;">Server Status</span>
-              <span class="badge" style="background: #22c55e; color: white;">Online</span>
-            </div>
-            <div style="height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden;">
-              <div style="height: 100%; background: #22c55e; width: 100%;"></div>
-            </div>
-          </div>
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 14px; color: var(--text-primary); font-weight: 500;">Database</span>
-              <span class="badge" style="background: #22c55e; color: white;">Healthy</span>
-            </div>
-            <div style="height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden;">
-              <div style="height: 100%; background: #22c55e; width: 95%;"></div>
-            </div>
-          </div>
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 14px; color: var(--text-primary); font-weight: 500;">Storage</span>
-              <span class="badge" style="background: #f59e0b; color: white;">75% Used</span>
-            </div>
-            <div style="height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden;">
-              <div style="height: 100%; background: #f59e0b; width: 75%;"></div>
-            </div>
-          </div>
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 14px; color: var(--text-primary); font-weight: 500;">Memory Usage</span>
-              <span class="badge" style="background: #3b82f6; color: white;">Normal</span>
-            </div>
-            <div style="height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden;">
-              <div style="height: 100%; background: #3b82f6; width: 60%;"></div>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -269,5 +193,71 @@
     padding: 20px !important;
   }
 }
+
+/* Charts row responsive */
+@media (max-width: 900px) {
+  .admin-content > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>
+@endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  var chartDefaults = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { precision: 0 }
+      }
+    }
+  };
+
+  var monthlyData = @json($last12Months);
+  var monthlyCtx = document.getElementById('applicationsPerMonthChart');
+  if (monthlyCtx) {
+    new Chart(monthlyCtx, {
+      type: 'bar',
+      data: {
+        labels: monthlyData.map(function (d) { return d.label; }),
+        datasets: [{
+          label: 'Applications',
+          data: monthlyData.map(function (d) { return d.count; }),
+          backgroundColor: 'rgba(15, 111, 179, 0.6)',
+          borderColor: 'rgb(15, 111, 179)',
+          borderWidth: 1
+        }]
+      },
+      options: chartDefaults
+    });
+  }
+
+  var yearlyData = @json($last6Years);
+  var yearlyCtx = document.getElementById('applicationsPerYearChart');
+  if (yearlyCtx) {
+    new Chart(yearlyCtx, {
+      type: 'bar',
+      data: {
+        labels: yearlyData.map(function (d) { return d.label; }),
+        datasets: [{
+          label: 'Applications',
+          data: yearlyData.map(function (d) { return d.count; }),
+          backgroundColor: 'rgba(34, 197, 94, 0.6)',
+          borderColor: 'rgb(34, 197, 94)',
+          borderWidth: 1
+        }]
+      },
+      options: chartDefaults
+    });
+  }
+})();
+</script>
 @endsection
