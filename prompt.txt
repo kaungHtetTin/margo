@@ -1,15 +1,42 @@
-Before Courses section add company section
-This section will have the following sub-section
-About Our company
-Vision and mission
-Meet Our Team
-Overseas Employment
-    Recruiting
-    Training
-    Development
-    Employment
-    KPI tracking
-    Salary Management
-Legitimacy and Confidence
+At the home page, for overseas_employment sub section
+Add the following content,
+translate into myanmar and japanese by yourself
 
-You can left image placeholder for some design.
+Recruiting
+We offer an effective
+screening process and
+search for the right person
+for the appropriate job.
+
+Training
+We give training in related
+skills, both technical and
+managerial, for specific
+jobs and occupations.
+
+Development
+Personal development is
+necessary for candidates,
+so we would provide the
+development programs.
+
+Employment
+We tend to make overseas
+employment available for
+all candidates and employ
+them in their professional
+fields.
+
+KPI tracking
+We track our employed
+candidates to provide best
+working conditions and
+development program.
+
+Salary Management
+We manage salaries for
+our employed candidates,
+relating to the saving and
+transfer process for their
+families.
+

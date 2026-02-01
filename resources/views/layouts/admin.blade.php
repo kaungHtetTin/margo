@@ -631,7 +631,7 @@
         <i class="fas fa-users"></i>
         <span>Users</span>
       </a>
-      <a href="{{ route('admin.jobs') }}" class="nav-link {{ request()->routeIs('admin.jobs') ? 'active' : '' }}">
+      <a href="{{ route('admin.jobs.index') }}" class="nav-link {{ request()->routeIs('admin.jobs.*') ? 'active' : '' }}">
         <i class="fas fa-briefcase"></i>
         <span>Jobs</span>
       </a>

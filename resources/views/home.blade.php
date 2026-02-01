@@ -22,8 +22,9 @@
 </section>
 
 <!-- Company Section -->
-<section id="company" style="padding-top: 100px; padding-bottom: 80px; background: #f9fafb;">
-  <div class="container">
+<section id="company" class="company-section">
+  <div class="company-section-bg"></div>
+  <div class="container position-relative">
     <div class="gallery-header" data-aos="fade-up">
       <span class="gallery-label">{{ __('common.company_label') }}</span>
       <h2 class="gallery-title">{{ $siteSettings['company_name'] ?? __('common.company_name') }}</h2>
@@ -32,124 +33,100 @@
     </div>
 
     <!-- About Our Company -->
-    <div class="row align-items-center mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
-      <div class="col-lg-5 mb-4 mb-lg-0">
-        <div class="company-img-placeholder" style="aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(15, 111, 179, 0.08) 0%, rgba(41, 169, 225, 0.12) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-secondary); border: 1px dashed var(--border-color);">
-          <i class="fas fa-building" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
-          <span style="font-size: 13px;">{{ __('common.company_label') }} {{ __('common.view') }}</span>
+    <div class="company-subsection company-about" data-aos="fade-up">
+      <div class="company-about-grid">
+        <div class="company-media">
+          <div class="company-media-inner" style="background-image: url('{{ asset('assets/img/margo_4.JPG') }}');"></div>
+        </div>
+        <div class="company-content">
+          <h3 class="company-subtitle">{{ __('common.about_our_company') }}</h3>
+          <p class="company-text">{{ __('common.about_company_text') }}</p>
         </div>
       </div>
-      <div class="col-lg-7">
-        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">{{ __('common.about_our_company') }}</h3>
-        <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.75;">{{ __('common.about_company_text') }}</p>
+    </div>
+
+    <!-- KAUNG PYAE Japanese Language Center -->
+    <div class="company-subsection company-kaung-pyae" data-aos="fade-up">
+      <div class="company-about-grid company-about-grid-reverse">
+        <div class="company-media company-media-logo">
+          <div class="company-kaung-pyae-logo">
+            <img src="{{ asset('assets/img/language_center_logo.jpg') }}" alt="{{ __('common.kaung_pyae_title') }}">
+          </div>
+        </div>
+        <div class="company-content">
+          <h3 class="company-subtitle">{{ __('common.kaung_pyae_title') }}</h3>
+          <p class="company-text">{{ __('common.kaung_pyae_text') }}</p>
+        </div>
       </div>
     </div>
 
     <!-- Vision and Mission -->
-    <div class="row g-4 mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
-      <div class="col-md-6">
-        <div style="padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-            <i class="fas fa-eye" style="font-size: 22px; color: var(--primary);"></i>
-          </div>
-          <h4 style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">{{ __('common.vision_title') }}</h4>
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0;">{{ __('common.vision_text') }}</p>
+    <div class="company-subsection" data-aos="fade-up">
+      <div class="company-vision-mission">
+        <div class="company-vm-card">
+          <div class="company-vm-icon"><i class="fas fa-eye"></i></div>
+          <h4 class="company-vm-title">{{ __('common.vision_title') }}</h4>
+          <p class="company-vm-text">{{ __('common.vision_text') }}</p>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div style="padding: 28px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-            <i class="fas fa-bullseye" style="font-size: 22px; color: var(--primary);"></i>
-          </div>
-          <h4 style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">{{ __('common.mission_title') }}</h4>
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0;">{{ __('common.mission_text') }}</p>
+        <div class="company-vm-card">
+          <div class="company-vm-icon"><i class="fas fa-bullseye"></i></div>
+          <h4 class="company-vm-title">{{ __('common.mission_title') }}</h4>
+          <p class="company-vm-text">{{ __('common.mission_text') }}</p>
         </div>
       </div>
     </div>
 
     <!-- Meet Our Team -->
-    <div class="row align-items-center mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
-      <div class="col-lg-5 order-lg-2 mb-4 mb-lg-0">
-        <div class="company-img-placeholder" style="aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(15, 111, 179, 0.08) 0%, rgba(41, 169, 225, 0.12) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-secondary); border: 1px dashed var(--border-color);">
-          <i class="fas fa-users" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
-          <span style="font-size: 13px;">{{ __('common.meet_our_team') }}</span>
+    <div class="company-subsection company-team" data-aos="fade-up">
+      <div class="company-about-grid company-about-grid-reverse">
+        <div class="company-media">
+          <div class="company-media-inner" style="background-image: url('{{ asset('assets/img/margo_10.JPG') }}');"></div>
         </div>
-      </div>
-      <div class="col-lg-7 order-lg-1">
-        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">{{ __('common.meet_our_team') }}</h3>
-        <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.75;">{{ __('common.meet_team_text') }}</p>
+        <div class="company-content">
+          <h3 class="company-subtitle">{{ __('common.meet_our_team') }}</h3>
+          <p class="company-text">{{ __('common.meet_team_text') }}</p>
+        </div>
       </div>
     </div>
 
     <!-- Overseas Employment -->
-    <div class="mb-5 pb-5" data-aos="fade-up" style="border-bottom: 1px solid var(--border-color);">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">{{ __('common.overseas_employment') }}</h3>
-        <p style="font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto;">{{ __('common.overseas_employment_tagline') }}</p>
+    <div class="company-subsection" data-aos="fade-up">
+      <div class="company-oe-header">
+        <h3 class="company-oe-title">{{ __('common.overseas_employment') }}</h3>
+        <p class="company-oe-tagline">{{ __('common.overseas_employment_tagline') }}</p>
       </div>
-      <div class="row g-3">
-        <div class="col-6 col-md-4">
-          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-user-plus" style="font-size: 18px; color: var(--primary);"></i>
-            </div>
-            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_recruiting') }}</span>
+      <div class="company-oe-grid">
+        @php
+          $oeItems = [
+            ['icon' => 'fa-user-plus', 'title' => 'oe_recruiting', 'text' => 'oe_recruiting_text'],
+            ['icon' => 'fa-chalkboard-teacher', 'title' => 'oe_training', 'text' => 'oe_training_text'],
+            ['icon' => 'fa-chart-line', 'title' => 'oe_development', 'text' => 'oe_development_text'],
+            ['icon' => 'fa-briefcase', 'title' => 'oe_employment', 'text' => 'oe_employment_text'],
+            ['icon' => 'fa-tasks', 'title' => 'oe_kpi_tracking', 'text' => 'oe_kpi_tracking_text'],
+            ['icon' => 'fa-money-bill-wave', 'title' => 'oe_salary_management', 'text' => 'oe_salary_management_text'],
+          ];
+        @endphp
+        @foreach($oeItems as $item)
+          <div class="company-oe-card">
+            <div class="company-oe-icon"><i class="fas {{ $item['icon'] }}"></i></div>
+            <h4 class="company-oe-card-title">{{ __('common.' . $item['title']) }}</h4>
+            <p class="company-oe-card-text">{{ __('common.' . $item['text']) }}</p>
           </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-chalkboard-teacher" style="font-size: 18px; color: var(--primary);"></i>
-            </div>
-            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_training') }}</span>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-chart-line" style="font-size: 18px; color: var(--primary);"></i>
-            </div>
-            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_development') }}</span>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-briefcase" style="font-size: 18px; color: var(--primary);"></i>
-            </div>
-            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_employment') }}</span>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-tasks" style="font-size: 18px; color: var(--primary);"></i>
-            </div>
-            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_kpi_tracking') }}</span>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div style="padding: 20px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); height: 100%; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(15, 111, 179, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-money-bill-wave" style="font-size: 18px; color: var(--primary);"></i>
-            </div>
-            <span style="font-weight: 600; color: var(--text-primary);">{{ __('common.oe_salary_management') }}</span>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
 
     <!-- Legitimacy and Confidence -->
-    <div class="row align-items-center" data-aos="fade-up">
-      <div class="col-lg-5 mb-4 mb-lg-0">
-        <div class="company-img-placeholder" style="aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(15, 111, 179, 0.08) 0%, rgba(41, 169, 225, 0.12) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--text-secondary); border: 1px dashed var(--border-color);">
-          <i class="fas fa-shield-alt" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
-          <span style="font-size: 13px;">{{ __('common.legitimacy_confidence') }}</span>
+    <div class="company-subsection company-legitimacy" data-aos="fade-up">
+      <div class="company-about-grid">
+        <div class="company-media">
+          <div class="company-media-inner" style="background-image: url('{{ asset('assets/img/margo_1.JPG') }}');"></div>
         </div>
-      </div>
-      <div class="col-lg-7">
-        <h3 style="font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;">{{ __('common.legitimacy_confidence') }}</h3>
-        <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.75;">{{ __('common.legitimacy_text') }}</p>
+        <div class="company-content">
+          <div class="company-legitimacy-badge"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="company-subtitle">{{ __('common.legitimacy_confidence') }}</h3>
+          <p class="company-text">{{ __('common.legitimacy_text') }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -390,6 +367,324 @@
 
 @push('styles')
 <style>
+/* Company Section - Redesigned */
+.company-section {
+  padding: 120px 0 100px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 30%, #f8fafc 70%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.company-section-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 30%, rgba(15, 111, 179, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 90% 70%, rgba(41, 169, 225, 0.05) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.company-subsection {
+  margin-bottom: 80px;
+}
+
+.company-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.company-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.company-about-grid-reverse {
+  direction: rtl;
+}
+
+.company-about-grid-reverse > * {
+  direction: ltr;
+}
+
+.company-media {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(15, 111, 179, 0.15);
+}
+
+.company-media-inner {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.company-media:hover .company-media-inner {
+  transform: scale(1.03);
+}
+
+/* KAUNG PYAE - Logo display */
+.company-media-logo {
+  overflow: visible;
+}
+
+.company-media-logo .company-kaung-pyae-logo {
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: linear-gradient(135deg, rgba(15, 111, 179, 0.06) 0%, rgba(41, 169, 225, 0.08) 100%);
+  border-radius: 20px;
+}
+
+.company-kaung-pyae-logo img {
+  max-width: 100%;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px -8px rgba(15, 111, 179, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.company-media-logo:hover .company-kaung-pyae-logo img {
+  transform: scale(1.02);
+}
+
+.company-content {
+  padding: 0 8px;
+}
+
+.company-subtitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.company-text {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Vision & Mission */
+.company-vision-mission {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.company-vm-card {
+  padding: 40px 36px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.company-vm-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+}
+
+.company-vm-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px -15px rgba(15, 111, 179, 0.2);
+}
+
+.company-vm-card:hover::before {
+  transform: scaleY(1);
+}
+
+.company-vm-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(15, 111, 179, 0.12) 0%, rgba(41, 169, 225, 0.15) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.company-vm-icon i {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.company-vm-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.company-vm-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Overseas Employment */
+.company-oe-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.company-oe-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.company-oe-tagline {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.company-oe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.company-oe-card {
+  padding: 32px 28px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.company-oe-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 16px 32px -12px rgba(15, 111, 179, 0.18);
+}
+
+.company-oe-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(15, 111, 179, 0.1) 0%, rgba(41, 169, 225, 0.12) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.company-oe-icon i {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.company-oe-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.company-oe-card-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Legitimacy Badge */
+.company-legitimacy-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.company-legitimacy-badge i {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .company-about-grid,
+  .company-about-grid-reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 32px;
+  }
+
+  .company-oe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .company-vision-mission {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-section {
+    padding: 80px 0 60px;
+  }
+
+  .company-subsection {
+    margin-bottom: 56px;
+  }
+
+  .company-subtitle {
+    font-size: 22px;
+  }
+
+  .company-oe-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .company-oe-title {
+    font-size: 24px;
+  }
+
+  .company-vm-card {
+    padding: 28px 24px;
+  }
+}
+
 /* Gallery Section - Modern Design */
 .gallery-section {
   padding: 120px 0 100px;

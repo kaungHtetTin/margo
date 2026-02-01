@@ -22,9 +22,16 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         return view('admin.users');
     })->name('admin.users');
 
-    Route::get('/jobs', function () {
-        return view('admin.jobs');
-    })->name('admin.jobs');
+    // Jobs (Job Postings) Management Routes
+    Route::resource('jobs', \App\Http\Controllers\Admin\AdminJobController::class)->names([
+        'index' => 'admin.jobs.index',
+        'create' => 'admin.jobs.create',
+        'store' => 'admin.jobs.store',
+        'show' => 'admin.jobs.show',
+        'edit' => 'admin.jobs.edit',
+        'update' => 'admin.jobs.update',
+        'destroy' => 'admin.jobs.destroy',
+    ]);
 
     Route::get('/applications', function () {
         return view('admin.applications');
