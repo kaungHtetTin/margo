@@ -567,9 +567,6 @@
           <a class="nav-link {{ request()->routeIs('job-forms*') ? 'active' : '' }}" href="{{ localized_route('job-forms') }}">{{ __('nav.apply_job') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ localized_route('contact') }}">{{ __('nav.contact') }}</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link {{ request()->routeIs('faq') ? 'active' : '' }}" href="{{ localized_route('faq') }}">{{ __('nav.faq') }}</a>
         </li>
         <li class="nav-item">
