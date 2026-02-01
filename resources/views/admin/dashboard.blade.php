@@ -10,14 +10,6 @@
       <h1 style="font-size: 28px; font-weight: 600; color: var(--text-primary); margin: 0 0 8px 0; letter-spacing: -0.02em;">Dashboard</h1>
       <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">Welcome back! Here's what's happening with your business today.</p>
     </div>
-    <div style="display: flex; gap: 12px;">
-      <button class="btn btn-outline-primary">
-        <i class="fas fa-download" style="margin-right: 8px;"></i>Export Report
-      </button>
-      <button class="btn-admin">
-        <i class="fas fa-plus" style="margin-right: 8px;"></i>Add New
-      </button>
-    </div>
   </div>
 
   <!-- Stats Cards Row -->
