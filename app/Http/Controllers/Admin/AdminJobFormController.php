@@ -42,10 +42,7 @@ class AdminJobFormController extends Controller
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'status' => 'required|in:draft,active,inactive',
-                'is_active' => 'nullable|boolean',
             ]);
-
-            $validated['is_active'] = $request->has('is_active') ? true : false;
 
             JobForm::create($validated);
 
@@ -98,10 +95,7 @@ class AdminJobFormController extends Controller
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'status' => 'required|in:draft,active,inactive',
-                'is_active' => 'nullable|boolean',
             ]);
-
-            $validated['is_active'] = $request->has('is_active') ? true : false;
 
             $jobForm->update($validated);
 

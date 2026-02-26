@@ -90,15 +90,6 @@
               @enderror
             </div>
 
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" {{ old('is_active') ? 'checked' : '' }}>
-                <label class="form-check-label" for="is_active" style="font-weight: 500; color: var(--text-primary);">
-                  Is Active
-                </label>
-              </div>
-              <small class="text-muted" style="font-size: 12px;">Check to make this form active for users</small>
-            </div>
           </div>
         </div>
 

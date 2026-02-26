@@ -42,7 +42,7 @@ class JobApplicationController extends Controller
         }])->findOrFail($id);
 
         // Check if form is active
-        if (!$jobForm->is_active || $jobForm->status !== 'active') {
+        if ($jobForm->status !== 'active') {
             abort(404, 'This job form is not available.');
         }
 
@@ -63,7 +63,7 @@ class JobApplicationController extends Controller
             $jobForm = JobForm::with('formData')->findOrFail($id);
 
             // Check if form is active
-            if (!$jobForm->is_active || $jobForm->status !== 'active') {
+            if ($jobForm->status !== 'active') {
                 return redirect()->back()
                     ->with('error', 'This job form is not available.')
                     ->withInput();

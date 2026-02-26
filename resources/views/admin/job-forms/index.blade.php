@@ -42,7 +42,6 @@
                 <th>Description</th>
                 <th>Fields</th>
                 <th>Status</th>
-                <th>Active</th>
                 <th>Created</th>
                 <th>Actions</th>
               </tr>
@@ -71,13 +70,6 @@
                       <span class="badge bg-warning">Draft</span>
                     @else
                       <span class="badge bg-secondary">Inactive</span>
-                    @endif
-                  </td>
-                  <td>
-                    @if($jobForm->is_active)
-                      <span class="badge bg-success">Yes</span>
-                    @else
-                      <span class="badge bg-secondary">No</span>
                     @endif
                   </td>
                   <td>{{ $jobForm->created_at->format('Y-m-d') }}</td>

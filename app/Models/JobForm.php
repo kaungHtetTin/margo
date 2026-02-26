@@ -14,11 +14,9 @@ class JobForm extends Model
         'title',
         'description',
         'status',
-        'is_active',
     ];
 
     protected $casts = [
-        'is_active' => 'boolean',
     ];
 
     /**
@@ -34,6 +32,6 @@ class JobForm extends Model
      */
     public function scopeActive($query)
     {
-        return $query->where('is_active', true)->where('status', 'active');
+        return $query->where('status', 'active');
     }
 }

@@ -102,17 +102,6 @@
           </div>
 
           <div style="margin-bottom: 16px;">
-            <strong style="color: var(--text-secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Is Active</strong>
-            <div style="margin-top: 4px;">
-              @if($jobForm->is_active)
-                <span class="badge bg-success">Yes</span>
-              @else
-                <span class="badge bg-secondary">No</span>
-              @endif
-            </div>
-          </div>
-
-          <div style="margin-bottom: 16px;">
             <strong style="color: var(--text-secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Form Fields</strong>
             <div style="margin-top: 4px; color: var(--text-primary);">
               {{ $jobForm->formData->count() }} field(s)
